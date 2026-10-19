@@ -29,6 +29,7 @@ label{display:block;color:#b5bbc1;margin:15px 0 7px;font-size:12px}input[type=ra
 
 /* Визуальная карта: один акцент на текущем этапе, остальное работает как аналитический контекст. */
 .timeline{display:flex;justify-content:space-between;position:relative;gap:10px;margin:5px 0 26px;color:#d0d4d8;font-size:10px;letter-spacing:.09em;text-transform:uppercase}.timeline:before{content:"";position:absolute;top:29px;left:2%;width:96%;height:1px;background:linear-gradient(90deg,#f3f4f4 0%,#8a9199 50%,#454b51 100%)}.timeline span{position:relative;padding-bottom:20px}.timeline span:after{content:"";position:absolute;bottom:-13px;left:4px;width:8px;height:8px;border:2px solid #d4d8dd;border-radius:50%;background:#151719}.summary-strip{margin:17px 0 0;background:#24282c;border-left:2px solid #e7ebee;padding:15px;display:grid;gap:5px}.summary-strip span{font-size:11px;color:#aeb5bb}.summary-strip strong{font-size:14px}.volume-insight{display:grid;grid-template-columns:1fr 1fr;gap:10px}.volume-insight>div{background:#24282d;border:1px solid #3b4248;border-radius:7px;padding:15px}.volume-insight strong{display:block;font-size:22px;margin-top:6px}.log-row{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #353a3f}.log-row>span{font-size:10px;color:#929aa3}.log-row b{font-size:12px}.log-row p{font-size:12px;margin:5px 0}.panel{box-shadow:0 10px 25px rgba(0,0,0,.12)}.stage{transition:background .15s,border-color .15s}.stage:hover{background:#30353a}.stage[aria-pressed=true]{background:#30363b;border-color:#e1e5e8;outline:none}.card:first-child{border-top:2px solid #e1e5e9}@media(max-width:480px){.timeline{font-size:8px}.volume-insight{grid-template-columns:1fr}}
+.case-graph{border:1px solid #363c42;background:#15181b;border-radius:8px;padding:8px;margin:16px 0;overflow:hidden}.case-graph svg{width:100%;height:auto}.event-actions{display:flex;justify-content:space-between;gap:8px}.event-actions button{background:#252a2f;color:#e7eaed;border:1px solid #4d555d;padding:9px 13px;border-radius:5px}.event-actions button:disabled{opacity:.3;cursor:default}.event-ledger{margin-top:20px}.event-record{display:flex;gap:16px;padding:12px 6px;border-bottom:1px solid #353b40;color:#bdc4ca;font-size:12px}.event-record button{background:transparent;border:0;color:inherit;text-align:left;padding:0;cursor:pointer}.event-record.selected{background:#2b3036;color:#fff}.event-record span{min-width:55px;color:#a6b0ba}.case-node{cursor:pointer}.case-node:focus{outline:none}.case-node:focus rect,.case-node:hover rect{stroke:#fff;stroke-width:3}@media(max-width:480px){.event-record{gap:8px}}
 </style>
 </head>
 <body>
@@ -43,13 +44,28 @@ label{display:block;color:#b5bbc1;margin:15px 0 7px;font-size:12px}input[type=ra
 </div>
 <div class="layout">
 <section class="panel">
-<div class="tabs" role="tablist" aria-label="Разделы расследования"><button class="tab" role="tab" aria-selected="true" data-tab="map">Карта</button><button class="tab" role="tab" aria-selected="false" data-tab="volume">Объём</button><button class="tab" role="tab" aria-selected="false" data-tab="controls">Контроль</button></div>
+<div class="tabs" role="tablist" aria-label="Разделы расследования"><button class="tab" role="tab" aria-selected="true" data-tab="map">Карта</button><button class="tab" role="tab" aria-selected="false" data-tab="events">События</button><button class="tab" role="tab" aria-selected="false" data-tab="volume">Объём</button><button class="tab" role="tab" aria-selected="false" data-tab="controls">Контроль</button></div>
 <div id="map" role="tabpanel">
 <h2>Карта движения ценности</h2>
 <div class="timeline" aria-label="Линия исследования"><span>01 / Вход</span><span>02 / Бонус</span><span>03 / Проверка</span></div>
 <div class="stage-grid" id="stageGrid"></div>
 <div class="summary-strip"><span>Точка исследования</span><strong>Ограничение бонуса → внутренний баланс</strong><span>Статус: требует подтверждения</span></div>
 <p class="note">Порядок отражает категории событий, а не операционную инструкцию. Подробности эксплуатации намеренно не включены.</p>
+</div>
+<div id="events" class="hidden" role="tabpanel">
+<h2>События и связи</h2><p>Здесь мы смотрим не на предполагаемую схему действий, а на контроль цифровой ценности на каждом переходе.</p>
+<div class="case-graph">
+<svg viewBox="0 0 720 255" role="img" aria-label="Синтетический граф: источник бонуса, внутренний баланс, получатель, контроль и запрос выплаты" id="caseGraph">
+<g fill="none" stroke="#65717c" stroke-width="2">
+<path d="M90 85 H220"/><path d="M280 85 H400"/><path d="M460 85 H575"/><path d="M430 105 V180 H590"/>
+</g><g id="caseGraphNodes"></g></svg>
+</div>
+<label for="eventTime">Шкала событий · <strong id="eventTimeLabel">1 / 5</strong></label>
+<input type="range" min="0" max="4" step="1" id="eventTime" value="0">
+<div class="event-actions"><button type="button" id="eventPrev">← Ранее</button><button type="button" id="eventNext">Далее →</button></div>
+<div class="summary-strip"><span id="eventStatus">СОБЫТИЕ / 01</span><strong id="eventTitle"></strong><span id="eventDescription"></span></div>
+<div class="event-ledger"><h2>Журнал событий</h2><div id="eventRows"></div></div>
+<p class="note">Все события вымышленные. Шкала показывает последовательность аналитических проверок, а не интервалы или параметры действий из исторического случая.</p>
 </div>
 <div id="volume" class="hidden" role="tabpanel">
 <h2>Оценка масштабов по периодам</h2>
@@ -90,5 +106,51 @@ document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()
 // Это оценка нагрузки. Не рассчитываем из неё доход и не выдаём допущения за результат.
 function recalc(){const days=Number(document.getElementById("days").value),pct=Number(document.getElementById("yield").value);const count=days*5000;document.getElementById("daysLabel").textContent=days;document.getElementById("yieldLabel").textContent=pct+"%";document.getElementById("attempts").textContent=count.toLocaleString("ru-RU");document.getElementById("qualified").textContent=Math.floor(count*pct/100).toLocaleString("ru-RU");document.getElementById("qualifiedBar").style.width=pct+"%";document.getElementById("lostShare").textContent=(100-pct)+"%"}
 ["days","yield"].forEach(id=>document.getElementById(id).addEventListener("input",recalc));recalc();
+
+// Синтетические события нужны для проверки контроля. К реальным аккаунтам и деньгам нет подключения.
+const caseEvents=[
+ {time:"T+00",title:"Начисление бонуса",description:"Ограниченная цифровая ценность зафиксирована с признаком происхождения.",node:0},
+ {time:"T+01",title:"Проверка ограничений",description:"Проверяем, допускает ли правило внутренний перевод такого актива.",node:1},
+ {time:"T+02",title:"Внутреннее отражение",description:"В синтетическом журнале получатель видит кредит. Источник бонуса не теряется.",node:2},
+ {time:"T+03",title:"Контроль происхождения",description:"Система рассматривает источник актива и допустимость дальнейшего расчёта.",node:3},
+ {time:"T+04",title:"Запрос выплаты отклонён",description:"Тестовый запрос заблокирован: актив остаётся неденежным.",node:4}
+];
+const gNodes=[
+ {x:35,y:52,w:110,h:66,name:"Бонус",sub:"источник"},
+ {x:220,y:52,w:110,h:66,name:"Внутренний",sub:"счёт"},
+ {x:400,y:52,w:110,h:66,name:"Получатель",sub:"связи"},
+ {x:555,y:52,w:135,h:66,name:"Контроль",sub:"происхождения"},
+ {x:555,y:173,w:135,h:66,name:"Запрос",sub:"выплаты"}
+];
+// Каждый узел — состояние проверки. Время T+ условное и не связано с реальным прогоном.
+const gCanvas=document.getElementById("caseGraphNodes");
+let eventIndex=0;
+function selectEvent(idx){
+ eventIndex=Math.max(0,Math.min(caseEvents.length-1,idx));
+ const selected=caseEvents[eventIndex];document.getElementById("eventTime").value=eventIndex;
+ document.getElementById("eventTimeLabel").textContent=(eventIndex+1)+" / "+caseEvents.length;
+ document.getElementById("eventStatus").textContent=selected.time+" / СОБЫТИЕ "+String(eventIndex+1).padStart(2,"0");
+ document.getElementById("eventTitle").textContent=selected.title;
+ document.getElementById("eventDescription").textContent=selected.description;
+ document.getElementById("eventPrev").disabled=eventIndex===0;
+ document.getElementById("eventNext").disabled=eventIndex===caseEvents.length-1;
+ Array.from(gCanvas.children).forEach((node,i)=>node.querySelector("rect").setAttribute("stroke",i===selected.node?"#f2f3f4":"#525c66"));
+ document.querySelectorAll(".event-record").forEach((r,i)=>r.classList.toggle("selected",i===eventIndex));
+}
+gNodes.forEach((n,i)=>{
+ const group=document.createElementNS("http://www.w3.org/2000/svg","g");
+ group.setAttribute("class","case-node");group.setAttribute("tabindex","0");group.setAttribute("role","button");
+ group.setAttribute("aria-label",n.name+": "+n.sub);
+ const rect=document.createElementNS("http://www.w3.org/2000/svg","rect");
+ rect.setAttribute("x",n.x);rect.setAttribute("y",n.y);rect.setAttribute("width",n.w);rect.setAttribute("height",n.h);rect.setAttribute("rx","8");rect.setAttribute("fill","#252b30");rect.setAttribute("stroke","#525c66");rect.setAttribute("stroke-width","2");group.appendChild(rect);
+ [n.name,n.sub].forEach((line,j)=>{const label=document.createElementNS("http://www.w3.org/2000/svg","text");label.setAttribute("x",n.x+n.w/2);label.setAttribute("y",n.y+28+j*17);label.setAttribute("text-anchor","middle");label.setAttribute("font-size",j===0?"13":"11");label.setAttribute("fill",j===0?"#f0f2f4":"#b0bac3");label.textContent=line;group.appendChild(label)});
+ const activate=()=>selectEvent(i);group.addEventListener("click",activate);group.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();activate()}});gCanvas.appendChild(group);
+});
+const eventRows=document.getElementById("eventRows");
+caseEvents.forEach((e,i)=>{const row=document.createElement("div");row.className="event-record";const t=document.createElement("span");t.textContent=e.time;const button=document.createElement("button");button.type="button";button.textContent=e.title;button.addEventListener("click",()=>selectEvent(i));row.append(t,button);eventRows.appendChild(row)});
+document.getElementById("eventTime").addEventListener("input",e=>selectEvent(Number(e.target.value)));
+document.getElementById("eventPrev").addEventListener("click",()=>selectEvent(eventIndex-1));
+document.getElementById("eventNext").addEventListener("click",()=>selectEvent(eventIndex+1));
+selectEvent(0);
 </script>
 </body></html>
