@@ -44,7 +44,7 @@ label{display:block;color:#b5bbc1;margin:15px 0 7px;font-size:12px}input[type=ra
 </div>
 <div class="layout">
 <section class="panel">
-<div class="tabs" role="tablist" aria-label="Разделы расследования"><button class="tab" role="tab" aria-selected="true" data-tab="map">Карта</button><button class="tab" role="tab" aria-selected="false" data-tab="events">События</button><button class="tab" role="tab" aria-selected="false" data-tab="volume">Объём</button><button class="tab" role="tab" aria-selected="false" data-tab="controls">Контроль</button></div>
+<div class="tabs" role="tablist" aria-label="Разделы расследования"><button class="tab" role="tab" aria-selected="true" data-tab="map">Карта</button><button class="tab" role="tab" aria-selected="false" data-tab="events">События</button><button class="tab" role="tab" aria-selected="false" data-tab="volume">Объём</button><button class="tab" role="tab" aria-selected="false" data-tab="controls">Контроль</button><button class="tab" role="tab" aria-selected="false" data-tab="batch">Станции</button></div>
 <div id="map" role="tabpanel">
 <h2>Карта движения ценности</h2>
 <div class="timeline" aria-label="Линия исследования"><span>01 / Вход</span><span>02 / Бонус</span><span>03 / Проверка</span></div>
@@ -76,6 +76,17 @@ label{display:block;color:#b5bbc1;margin:15px 0 7px;font-size:12px}input[type=ra
 <span class="note">Условно результативные</span><div class="value" id="qualified"></div><div class="bar second"><div id="qualifiedBar"></div></div></div>
 <div class="volume-insight"><div><span class="note">Средний входящий объём</span><strong>≈ 208 / час</strong></div><div><span class="note">Доля потерь</span><strong id="lostShare">55%</strong></div></div>
 <p class="note">28 дней и 45% — настраиваемые допущения. Не являются подтверждённым итогом истории. Нет данных, чтобы разделить общие потери между регистрацией, блокировками и отсутствием бонуса.</p>
+</div>
+<div id="batch" class="hidden" role="tabpanel">
+<h2>Пакетная обработка · две виртуальные станции</h2>
+<p>Оцениваем очередь и пропускную способность. Оператор наблюдает за ошибками. Никакие внешние сервисы не вызываются.</p>
+<div class="volume-insight"><div><span class="note">Станция А / профиль</span><strong id="batchA">240 / час</strong></div><div><span class="note">Станция Б / учёт</span><strong id="batchB">220 / час</strong></div></div>
+<label for="batchTotal">Записей в очереди: <strong id="batchTotalLabel">5 000</strong></label><input id="batchTotal" type="range" min="100" max="10000" step="100" value="5000">
+<label for="batchHours">Время обработки: <strong id="batchHoursLabel">24 ч</strong></label><input id="batchHours" type="range" min="1" max="48" step="1" value="24">
+<label for="batchARate">Станция А: <strong id="batchARateLabel">240 / час</strong></label><input id="batchARate" type="range" min="20" max="500" step="10" value="240">
+<label for="batchBRate">Станция Б: <strong id="batchBRateLabel">220 / час</strong></label><input id="batchBRate" type="range" min="20" max="500" step="10" value="220">
+<div class="summary-strip"><span>Прогноз по мощности</span><strong id="batchProcessed"></strong><span id="batchRemaining"></span></div>
+<div class="bar"><div id="batchBar"></div></div><p class="note">Мощности станций условные, а не фактическая производительность из исторического кейса. Результат показывает вместимость очереди, не успешность верификации.</p>
 </div>
 <div id="controls" class="hidden" role="tabpanel">
 <h2>Контрольные точки</h2>
@@ -152,5 +163,21 @@ document.getElementById("eventTime").addEventListener("input",e=>selectEvent(Num
 document.getElementById("eventPrev").addEventListener("click",()=>selectEvent(eventIndex-1));
 document.getElementById("eventNext").addEventListener("click",()=>selectEvent(eventIndex+1));
 selectEvent(0);
+
+// Считаем мощность последовательных стадий. Узкое место ограничивает весь пакет.
+function updateBatch(){
+const total=Number(document.getElementById("batchTotal").value),hours=Number(document.getElementById("batchHours").value),a=Number(document.getElementById("batchARate").value),b=Number(document.getElementById("batchBRate").value);
+const done=Math.min(total,a*hours,b*hours);
+document.getElementById("batchTotalLabel").textContent=total.toLocaleString("ru-RU");
+document.getElementById("batchHoursLabel").textContent=hours+" ч";
+document.getElementById("batchARateLabel").textContent=a+" / час";
+document.getElementById("batchBRateLabel").textContent=b+" / час";
+document.getElementById("batchA").textContent=a+" / час";
+document.getElementById("batchB").textContent=b+" / час";
+document.getElementById("batchProcessed").textContent=done.toLocaleString("ru-RU")+" записей обработано";
+document.getElementById("batchRemaining").textContent="В очереди остаётся: "+(total-done).toLocaleString("ru-RU");
+document.getElementById("batchBar").style.width=(100*done/total)+"%";
+}
+["batchTotal","batchHours","batchARate","batchBRate"].forEach(id=>document.getElementById(id).addEventListener("input",updateBatch));updateBatch();
 </script>
 </body></html>
