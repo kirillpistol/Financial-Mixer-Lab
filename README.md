@@ -40,3 +40,7 @@ Opening balances are journaled against a synthetic system funding account per cu
 
 ## Next milestone
 Add anonymized historical case descriptions, synthetic replay events, alerts, and monitoring evaluation metrics (recall, precision, false-positive rate).
+
+## Synthetic load module
+
+Use `python -m scripts.load_test --accounts 50 --operations 200 --tps 20` to estimate a bounded synthetic workload; add `--execute` to run it locally. See [load testing notes](docs/LOAD_TESTING.md). The `app.workload_profiles` registry defines declarative offline scenarios; only fictional accounts are supported.
