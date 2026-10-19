@@ -115,20 +115,32 @@ Whether 5,000 accounts/day was sustained across multiple days; whether these wer
 
 ## Supplement B — Reported campaign duration and qualification yield
 
-**Narrator estimate; unverified:** The activity lasted **slightly less than one month**. Of approximately **5,000 new accounts attempted per day**, **slightly under 50%** successfully passed the relevant qualification or verification step (the exact success criterion is not yet documented). These should not be equated with completed bonus claims, transfers, or redeemable credits.
+**Narrator estimate; unverified:** The activity lasted **slightly less than one month**. Of approximately **5,000 attempted new accounts per day**, **slightly under 50%** reportedly remained usable through the combined process up to receiving a usable reward. This is an **aggregate yield**, not the stand-alone KYC or registration pass rate. These should not be equated with completed bonus claims, transfers, or redeemable credits.
 
 ### Derived bounds (illustrative, not audited totals)
 
-- Daily qualifying accounts: **below 2,500**, assuming the 5,000/day input estimate and under-50% yield refer to the same daily cohort.
-- Daily unsuccessful/non-qualifying accounts: **above 2,500** under the same assumptions.
+- Daily usable/reward-ready accounts (aggregate): **below 2,500**, assuming the 5,000/day input estimate and under-50% yield refer to the same daily cohort.
+- Daily accounts lost at one or more stages: **above 2,500** under the same assumptions.
 - Calendar-day duration is unknown; **do not assert 30 days**, exact registrations, precise payouts per account, or an exact total.
 - For scale intuition only: **28 days at 5,000 attempts/day = 140,000 attempted accounts**, with **fewer than 70,000** qualifying at an under-50% yield. The 28-day period is hypothetical, not a statement about the case.
 - The reported **RUB 2 million** outcome remains an unverified narrator estimate, without corroborated gross/net definition.
 
 ### Defensive modelling implications
 
-Use a configurable **daily attempted-account count**, **qualification probability below 0.5**, and **duration in days**, with separately recorded reward-issue events. Analyze drop-off, suspicious coordinated account clusters, and restriction-preserving internal ledger flows using only synthetic actors. Rate-based registration and identity integrity checks belong in the defender's monitoring model, not a live-registration bot.
+Use a configurable **daily attempted-account count**, **end-to-end usable reward yield below 0.5**, and **duration in days**, with separately recorded reward-issue events. Analyze drop-off, suspicious coordinated account clusters, and restriction-preserving internal ledger flows using only synthetic actors. Rate-based registration and identity integrity checks belong in the defender's monitoring model, not a live-registration bot.
 
 ### Evidence still missing
 
 Actual count of days, whether 5,000/day was consistent, qualification criteria, number of successful reward claims, number of receivers, and source documents for settlement amounts.
+
+## Supplement C — Clarified causes of attrition
+
+**User clarification (unverified historical report):** The reported under-50% end-to-end yield combines multiple failure modes: unreliable or unsuitable SIM/phone-number inputs, VK account blocking, loss of accounts during the waiting/holding period, and missing promotional reward credits. The individual failure rates, overlaps, and causal ordering have **not** been measured.
+
+### Defender-oriented state model
+
+`attempted_account` → `platform_registration_state` → `holding_period_state` → `promotion_eligibility_state` → `reward_credit_state`
+
+Each state should support only synthetic events and outcomes `pass`, `reject`, `blocked`, `expired`, or `not_credited`. Record the first observed terminal reason separately from any later evidence. Avoid double-counting accounts affected by multiple reasons.
+
+**Interpretation:** The aggregate yield cannot establish verification quality, a stage-specific control bypass rate, or the number of redeemed rewards. No automated registration, SIM sourcing, or account-block avoidance is implemented.
