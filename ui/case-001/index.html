@@ -26,6 +26,9 @@ label{display:block;color:#b5bbc1;margin:15px 0 7px;font-size:12px}input[type=ra
 .footer{font-size:11px;color:#8c959e;margin:23px 0}.side-line{padding:13px 0;border-bottom:1px solid #33393e}.side-line:last-child{border:0}
 @media(max-width:850px){.layout{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}.stage-grid{grid-template-columns:1fr 1fr}.top{display:block}}
 @media(max-width:480px){.stage-grid{grid-template-columns:1fr}header{padding:18px}main{padding:18px 12px}.cards{gap:7px}.value{font-size:23px}}
+
+/* Визуальная карта: один акцент на текущем этапе, остальное работает как аналитический контекст. */
+.timeline{display:flex;justify-content:space-between;position:relative;gap:10px;margin:5px 0 26px;color:#d0d4d8;font-size:10px;letter-spacing:.09em;text-transform:uppercase}.timeline:before{content:"";position:absolute;top:29px;left:2%;width:96%;height:1px;background:linear-gradient(90deg,#f3f4f4 0%,#8a9199 50%,#454b51 100%)}.timeline span{position:relative;padding-bottom:20px}.timeline span:after{content:"";position:absolute;bottom:-13px;left:4px;width:8px;height:8px;border:2px solid #d4d8dd;border-radius:50%;background:#151719}.summary-strip{margin:17px 0 0;background:#24282c;border-left:2px solid #e7ebee;padding:15px;display:grid;gap:5px}.summary-strip span{font-size:11px;color:#aeb5bb}.summary-strip strong{font-size:14px}.volume-insight{display:grid;grid-template-columns:1fr 1fr;gap:10px}.volume-insight>div{background:#24282d;border:1px solid #3b4248;border-radius:7px;padding:15px}.volume-insight strong{display:block;font-size:22px;margin-top:6px}.log-row{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #353a3f}.log-row>span{font-size:10px;color:#929aa3}.log-row b{font-size:12px}.log-row p{font-size:12px;margin:5px 0}.panel{box-shadow:0 10px 25px rgba(0,0,0,.12)}.stage{transition:background .15s,border-color .15s}.stage:hover{background:#30353a}.stage[aria-pressed=true]{background:#30363b;border-color:#e1e5e8;outline:none}.card:first-child{border-top:2px solid #e1e5e9}@media(max-width:480px){.timeline{font-size:8px}.volume-insight{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -43,7 +46,9 @@ label{display:block;color:#b5bbc1;margin:15px 0 7px;font-size:12px}input[type=ra
 <div class="tabs" role="tablist" aria-label="Разделы расследования"><button class="tab" role="tab" aria-selected="true" data-tab="map">Карта</button><button class="tab" role="tab" aria-selected="false" data-tab="volume">Объём</button><button class="tab" role="tab" aria-selected="false" data-tab="controls">Контроль</button></div>
 <div id="map" role="tabpanel">
 <h2>Карта движения ценности</h2>
+<div class="timeline" aria-label="Линия исследования"><span>01 / Вход</span><span>02 / Бонус</span><span>03 / Проверка</span></div>
 <div class="stage-grid" id="stageGrid"></div>
+<div class="summary-strip"><span>Точка исследования</span><strong>Ограничение бонуса → внутренний баланс</strong><span>Статус: требует подтверждения</span></div>
 <p class="note">Порядок отражает категории событий, а не операционную инструкцию. Подробности эксплуатации намеренно не включены.</p>
 </div>
 <div id="volume" class="hidden" role="tabpanel">
@@ -53,6 +58,7 @@ label{display:block;color:#b5bbc1;margin:15px 0 7px;font-size:12px}input[type=ra
 <label for="yield">Результативность в сценарии: <strong id="yieldLabel">45%</strong></label><input type="range" min="1" max="49" value="45" id="yield">
 <div class="side-line"><span class="note">Попытки</span><div class="value" id="attempts"></div><div class="bar"><div style="width:100%"></div></div>
 <span class="note">Условно результативные</span><div class="value" id="qualified"></div><div class="bar second"><div id="qualifiedBar"></div></div></div>
+<div class="volume-insight"><div><span class="note">Средний входящий объём</span><strong>≈ 208 / час</strong></div><div><span class="note">Доля потерь</span><strong id="lostShare">55%</strong></div></div>
 <p class="note">28 дней и 45% — настраиваемые допущения. Не являются подтверждённым итогом истории. Нет данных, чтобы разделить общие потери между регистрацией, блокировками и отсутствием бонуса.</p>
 </div>
 <div id="controls" class="hidden" role="tabpanel">
@@ -65,7 +71,7 @@ label{display:block;color:#b5bbc1;margin:15px 0 7px;font-size:12px}input[type=ra
 </tbody></table>
 </div>
 </section>
-<aside class="panel"><div class="kicker">Анализ / выбранный этап</div><div id="detail" class="detail" aria-live="polite"></div><h2 style="margin-top:24px">Комментарии к кейсу</h2><div class="side-line">Сначала отделяем регистрацию от результата. 5 тысяч попыток — это не 5 тысяч начислений.</div><div class="side-line">Основной вопрос здесь в переходе ограниченной ценности между внутренними балансами.</div><div class="side-line">Без событий и проводок мы не можем утверждать, что именно пропустила система.</div><div class="side-line"><span class="badge">Расчёты только локально</span><p class="note">Реальные сервисы, карты и платежи не подключены.</p></div></aside>
+<aside class="panel"><div class="kicker">Анализ / выбранный этап</div><div id="detail" class="detail" aria-live="polite"></div><h2 style="margin-top:24px">Журнал наблюдений</h2><div class="log-row"><span>01</span><div><b>Масштаб</b><p>Объём попыток сам по себе не показывает результат.</p></div></div><div class="log-row"><span>02</span><div><b>Потери</b><p>Причины известны, но доли по этапам не установлены.</p></div></div><div class="log-row"><span>03</span><div><b>Происхождение</b><p>Проверяем, сохранялось ли ограничение бонуса.</p></div></div><h2 style="margin-top:24px">Комментарии к кейсу</h2><div class="side-line">Сначала отделяем регистрацию от результата. 5 тысяч попыток — это не 5 тысяч начислений.</div><div class="side-line">Основной вопрос здесь в переходе ограниченной ценности между внутренними балансами.</div><div class="side-line">Без событий и проводок мы не можем утверждать, что именно пропустила система.</div><div class="side-line"><span class="badge">Расчёты только локально</span><p class="note">Реальные сервисы, карты и платежи не подключены.</p></div></aside>
 </div><p class="footer">CASE 001 · Ветка исследования. Все показатели и события — оценки из исторического рассказа, если отдельно не указано иное. Интерфейс не подтверждает фактический размер ущерба.</p>
 </main>
 <script>
@@ -82,7 +88,7 @@ const grid=document.getElementById("stageGrid"),detail=document.getElementById("
 stages.forEach((stage,index)=>{const b=document.createElement("button");b.className="stage";b.type="button";b.setAttribute("aria-pressed",index===0?"true":"false");b.innerHTML='<span class="number">ЭТАП '+String(index+1).padStart(2,"0")+'</span><strong>'+stage.title+'</strong><span class="note">'+stage.short+'</span>';b.addEventListener("click",()=>{document.querySelectorAll(".stage").forEach(x=>x.setAttribute("aria-pressed","false"));b.setAttribute("aria-pressed","true");detail.replaceChildren();const heading=document.createElement("div");heading.className="detail-title";heading.textContent=stage.title;const desc=document.createElement("p");desc.textContent=stage.detail;detail.append(heading,desc)});grid.append(b);if(index===0)b.click()});
 document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-tab]").forEach(t=>{const selected=t===b;t.setAttribute("aria-selected",String(selected));document.getElementById(t.dataset.tab).classList.toggle("hidden",!selected)})}));
 // Это оценка нагрузки. Не рассчитываем из неё доход и не выдаём допущения за результат.
-function recalc(){const days=Number(document.getElementById("days").value),pct=Number(document.getElementById("yield").value);const count=days*5000;document.getElementById("daysLabel").textContent=days;document.getElementById("yieldLabel").textContent=pct+"%";document.getElementById("attempts").textContent=count.toLocaleString("ru-RU");document.getElementById("qualified").textContent=Math.floor(count*pct/100).toLocaleString("ru-RU");document.getElementById("qualifiedBar").style.width=pct+"%"}
+function recalc(){const days=Number(document.getElementById("days").value),pct=Number(document.getElementById("yield").value);const count=days*5000;document.getElementById("daysLabel").textContent=days;document.getElementById("yieldLabel").textContent=pct+"%";document.getElementById("attempts").textContent=count.toLocaleString("ru-RU");document.getElementById("qualified").textContent=Math.floor(count*pct/100).toLocaleString("ru-RU");document.getElementById("qualifiedBar").style.width=pct+"%";document.getElementById("lostShare").textContent=(100-pct)+"%"}
 ["days","yield"].forEach(id=>document.getElementById(id).addEventListener("input",recalc));recalc();
 </script>
 </body></html>
