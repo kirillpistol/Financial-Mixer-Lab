@@ -84,3 +84,31 @@ For any later case study, collect a redacted source narrative; approximate perio
 **Documented:** defensive hypotheses and synthetic test design.  
 **Not built:** case-specific simulator, detectors, external integrations.  
 **Not verified:** original event details and reported financial outcome.
+
+## Supplement A — Reported daily account volume (narrator update)
+
+**Reported observation, not independently verified:** Approximately **5,000 new accounts per day** were allegedly obtained through third-party registration services, with automated input and registration processes. This is an account-creation claim, **not** a demonstrated rate of successful reward issuance or payments. No supplier names, operational instructions, or reusable registration methods are retained.
+
+### Quantitative interpretation
+
+- **5,000 accounts/day** = **208.3/hour** = **3.47/minute** = **0.0579/second**, assuming an even 24-hour distribution.
+- Real automation can produce much higher **bursts**; peak concurrency and hourly distribution are **unknown**.
+- The current load-test tool's **1,000 synthetic accounts per run** is a safety/engineering cap; it does not establish capacity for 5,000 per day.
+- For a defensive simulation, split 5,000 **fictional** account events into separately bounded local batches and aggregate metrics. The lab must never register live accounts or connect to external identity, social, telecom, or payment providers.
+
+### Metrics worth collecting in a defender replay
+
+| Metric | Meaning |
+|---|---|
+| Created account events/day | Reported input volume; compare with accepted and rejected events |
+| Eligible reward recipients/day | Actually accepted synthetic reward eligibility checks |
+| Reward units issued | Units issued, not a fiat amount |
+| Unique senders per receiver | Potential concentration in a synthetic transaction graph |
+| Bursty arrival distribution | Contrast average and max minute rates |
+| Restricted-origin redemption requests | Attempts to treat non-cash value as withdrawable |
+| Alert precision, recall and false-positive rate | Detection effectiveness against a labelled synthetic dataset |
+
+### Unresolved evidence
+
+Whether 5,000 accounts/day was sustained across multiple days; whether these were all registered successfully; how many passed required verification; how many received rewards; time-of-day peak pattern; and whether reported RUB 2 million is gross, net, or approximate.
+
