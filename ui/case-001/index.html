@@ -1,26 +1,88 @@
 <!doctype html>
-<html lang="ru"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Financial Mixer Lab — Case Investigator</title>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CASE 001 · Financial Mixer Lab</title>
 <style>
-:root{color-scheme:dark;font-family:Inter,Arial,sans-serif;background:#0f1114;color:#edf0f3}*{box-sizing:border-box}body{margin:0}header{padding:20px 28px;border-bottom:1px solid #31363d;display:flex;justify-content:space-between;align-items:center}.brand{font-weight:800;letter-spacing:.09em}.sub{font-size:12px;color:#919aa5;margin-top:5px}.pill{font-size:11px;letter-spacing:.08em;border:1px solid #65717e;border-radius:18px;padding:7px 10px;color:#cbd2da}main{max-width:1320px;margin:auto;padding:25px;display:grid;gap:18px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric,.panel{border:1px solid #30363e;border-radius:13px;background:#191d22}.metric{padding:18px}.metric strong{display:block;font-size:28px;margin:8px 0}.muted{font-size:12px;color:#a3abb5}.layout{display:grid;grid-template-columns:2fr 1fr;gap:16px}.panel{padding:20px}h2{font-size:16px;margin:0 0 13px}button{background:#232a31;border:1px solid #505a65;color:#e9edf1;border-radius:7px;padding:9px 13px;cursor:pointer}button.active{background:#ecf0f3;color:#13171b;border-color:white}button:focus-visible,.node:focus-visible{outline:2px solid white;outline-offset:3px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}svg{max-width:100%;height:auto}.node{cursor:pointer}.node:hover circle,.node:focus circle{stroke:#fff;stroke-width:3}.details{min-height:140px;line-height:1.7;color:#d2d8de}.event{padding:13px 0;border-bottom:1px solid #30363e;font-size:13px}.event:last-child{border:0}.track{background:#303740;height:12px;border-radius:10px;overflow:hidden;margin:9px 0 17px}.fill{height:100%;background:#afb9c4}.foot{font-size:12px;color:#adb4bd;line-height:1.6}.hidden{display:none}label{display:block;margin:12px 0 5px;color:#ccd3db;font-size:12px}input[type=range]{width:100%;accent-color:#c6d0db}.stat{font-weight:700;color:#fff}@media(max-width:780px){.layout{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}header{padding:16px}main{padding:12px}.panel{padding:13px}}
-</style></head><body>
-<header><div><div class="brand">◈ FINANCIAL MIXER LAB</div><div class="sub">CASE INVESTIGATOR / 001 — исследовательский макет</div></div><span class="pill">SYNTHETIC DATA</span></header>
-<main><section class="metrics"><div class="metric"><span class="muted">Попытки / сутки</span><strong>≈ 5 000</strong><span class="muted">Оценка рассказчика</span></div><div class="metric"><span class="muted">Итоговый выход</span><strong>&lt; 50%</strong><span class="muted">Совокупный показатель</span></div><div class="metric"><span class="muted">Группа получателей</span><strong>5</strong><span class="muted">По описанию кейса</span></div><div class="metric"><span class="muted">Продолжительность</span><strong>&lt; 1 мес.</strong><span class="muted">Точная неизвестна</span></div></section>
-<div class="layout"><section class="panel"><div class="tabs"><button class="active" data-view="flow">Граф связей</button><button data-view="funnel">Воронка</button><button data-view="monitor">Мониторинг</button></div>
-<div id="flow"><h2>Движение ограниченной цифровой ценности</h2><svg viewBox="0 0 740 340" role="img" aria-label="Иллюстративные связи синтетических источников, пяти получателей и узла проверки">
-<g fill="none" stroke="#727f8e" stroke-width="1.6" opacity=".7">
-<path d="M95 65 C190 65 190 75 310 75 M95 125 C190 125 195 75 310 75 M95 185 C190 185 190 135 310 135 M95 245 C190 245 200 195 310 195 M95 65 C200 65 220 255 310 255 M95 125 C200 125 205 315 310 315 M95 185 C200 185 210 255 310 255 M95 245 C195 245 195 135 310 135"/>
-<path d="M330 75 C430 75 460 168 577 168 M330 135 C440 135 450 168 577 168 M330 195 C440 195 460 168 577 168 M330 255 C440 255 460 168 577 168 M330 315 C440 315 460 168 577 168"/>
-</g><g font-family="Arial" font-size="12" fill="#a7b1bd"><text x="25" y="21">Синтетические источники</text><text x="266" y="21">Получатели</text><text x="546" y="118">Контроль происхождения</text></g>
-<g id="graphNodes"></g></svg><p class="foot">Узлы и связи демонстрационные, не реконструкция фактических переводов. Выбери узел для просмотра.</p></div>
-<div id="funnel" class="hidden"><h2>Воронка статусов</h2><label>Попытки создания аккаунта — условный масштаб</label><div class="stat" id="attemptLabel">140 000</div><div class="track"><div class="fill" style="width:100%"></div></div><label>Агрегатный результат (расчётный пример, не факт)</label><div class="stat" id="yieldLabel">63 000 (45%)</div><div class="track"><div class="fill" id="yieldBar" style="width:45%"></div></div><label for="rate">Выход пригодных аккаунтов: <span id="rateLabel">45%</span></label><input id="rate" type="range" min="1" max="49" value="45"/><p class="foot">28 дней и 45% взяты исключительно для иллюстрации. Неизвестные стадии потерь нельзя разделить на точные проценты без данных.</p></div>
-<div id="monitor" class="hidden"><h2>Контрольные точки</h2><div class="event">01 · Подозрительная концентрация новых источников <span class="pill">REVIEW</span></div><div class="event">02 · Сохранение маркировки неденежного бонуса <span class="pill">CHECK</span></div><div class="event">03 · Переход к запросу внешнего расчёта <span class="pill">DENY IF RESTRICTED</span></div><div class="event">04 · Анализ связанных субъектов и ложных срабатываний <span class="pill">AUDIT</span></div><p class="foot">Это гипотезы защитного мониторинга, а не описание работающих правил конкретных платформ.</p></div></section>
-<aside class="panel"><h2>Карточка события</h2><div class="details" id="details" aria-live="polite">Выбери узел графа. Здесь появятся категория события, предмет проверки и статус моделирования.</div><h2>Параметры лаборатории</h2><div class="event">Режим: локальная симуляция</div><div class="event">Источник: исторический рассказ, без независимой проверки</div><div class="event">Реальные выплаты: отключены</div><div class="event">Происхождение бонусов: сохраняется в журнале</div></aside></div>
-<p class="foot">CASE 001 · Аналитическое представление для исследований финансовой безопасности. Не предназначено для автоматизации регистрации реальных аккаунтов, анонимизации действий или вывода денег.</p></main>
+:root{color-scheme:dark;background:#101113;color:#f1f2f2;font:14px/1.55 Arial,Helvetica,sans-serif}
+*{box-sizing:border-box}body{margin:0}button,input{font:inherit}button{cursor:pointer}
+header{border-bottom:1px solid #393c40;padding:20px max(22px,calc((100vw - 1260px)/2));display:flex;justify-content:space-between;align-items:center}
+.brand{font-weight:800;letter-spacing:.12em;font-size:15px}.kicker{font-size:11px;color:#91969a;letter-spacing:.12em;text-transform:uppercase}
+main{max-width:1300px;padding:28px 22px;margin:auto}.top{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:26px}
+h1{font-size:clamp(27px,3.8vw,44px);line-height:1.1;font-weight:600;margin:10px 0}h2{margin:0 0 16px;font-size:17px;font-weight:600}
+p{margin:10px 0;color:#c7cace}.chip{border:1px solid #4d5257;color:#ddd;font-size:11px;padding:6px 11px;border-radius:16px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.card,.panel{background:#191b1e;border:1px solid #35393d;border-radius:9px}.card{padding:17px}
+.value{font-size:29px;font-weight:600;line-height:1.35;margin:5px 0}.note{font-size:11px;color:#999fa5}
+.layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(280px,1fr);gap:14px;margin-top:14px}.panel{padding:20px}
+.tabs{display:flex;gap:8px;margin:0 0 24px;flex-wrap:wrap}.tab{border:1px solid #44494e;background:transparent;color:#c4c8cc;padding:8px 14px;border-radius:5px}.tab[aria-selected=true]{background:#f1f2f2;color:#101113;border-color:#f1f2f2}
+.hidden{display:none}.stage{border:1px solid #42484d;background:#202327;border-radius:7px;padding:15px;text-align:left;color:#eef0f1;width:100%;min-height:96px}
+.stage[aria-pressed=true]{outline:2px solid #d8dde1}.stage strong{display:block;font-size:14px;margin:8px 0 3px}.stage .number{font-size:10px;color:#9da6af}
+.stage .note{display:block}.stage-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.arrow{text-align:center;color:#8d969f;padding:7px}
+.detail{min-height:132px;border-top:1px solid #34393e;padding-top:14px;white-space:pre-line}.detail-title{font-size:16px;font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:12px}th{text-align:left;font-size:11px;color:#aeb4ba;font-weight:500}td,th{border-bottom:1px solid #373b40;padding:12px 7px;vertical-align:top}td:last-child{color:#bbc2c9}
+label{display:block;color:#b5bbc1;margin:15px 0 7px;font-size:12px}input[type=range]{width:100%;accent-color:#d9dde1}.bar{background:#32363b;height:13px;border-radius:3px;overflow:hidden;margin:8px 0 16px}.bar>div{height:100%;background:#bfc7cc}.bar.second>div{background:#707981}
+.badge{display:inline-block;font-size:10px;border:1px solid #59616a;border-radius:3px;padding:3px 6px;text-transform:uppercase}
+.footer{font-size:11px;color:#8c959e;margin:23px 0}.side-line{padding:13px 0;border-bottom:1px solid #33393e}.side-line:last-child{border:0}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}.stage-grid{grid-template-columns:1fr 1fr}.top{display:block}}
+@media(max-width:480px){.stage-grid{grid-template-columns:1fr}header{padding:18px}main{padding:18px 12px}.cards{gap:7px}.value{font-size:23px}}
+</style>
+</head>
+<body>
+<header><div><div class="brand">FINANCIAL MIXER LAB</div><div class="kicker">Case study · 001</div></div><span class="chip">Архив / исследование</span></header>
+<main>
+<div class="top"><div><div class="kicker">Расследование / злоупотребление бонусной механикой</div><h1>От бонуса до запроса выплаты</h1><p>Схема показывает движение цифровой ценности, точки контроля и известные нам ограничения данных.</p></div><span class="chip">Данные со слов участника</span></div>
+<div class="cards">
+<div class="card"><span class="note">Попыток за сутки</span><div class="value">≈ 5 000</div><div class="note">Оценка, не журнал регистрации</div></div>
+<div class="card"><span class="note">Совокупный выход</span><div class="value">&lt; 50%</div><div class="note">С учётом всех причин потерь</div></div>
+<div class="card"><span class="note">Получателей</span><div class="value">5</div><div class="note">По описанию случая</div></div>
+<div class="card"><span class="note">Период</span><div class="value">&lt; 1 месяца</div><div class="note">Точные даты не установлены</div></div>
+</div>
+<div class="layout">
+<section class="panel">
+<div class="tabs" role="tablist" aria-label="Разделы расследования"><button class="tab" role="tab" aria-selected="true" data-tab="map">Карта</button><button class="tab" role="tab" aria-selected="false" data-tab="volume">Объём</button><button class="tab" role="tab" aria-selected="false" data-tab="controls">Контроль</button></div>
+<div id="map" role="tabpanel">
+<h2>Карта движения ценности</h2>
+<div class="stage-grid" id="stageGrid"></div>
+<p class="note">Порядок отражает категории событий, а не операционную инструкцию. Подробности эксплуатации намеренно не включены.</p>
+</div>
+<div id="volume" class="hidden" role="tabpanel">
+<h2>Оценка масштабов по периодам</h2>
+<p>Считаем объём попыток и верхнюю границу успешного результата. Фактических ежедневных выгрузок нет.</p>
+<label for="days">Дней в расчёте: <strong id="daysLabel">28</strong></label><input type="range" min="1" max="29" value="28" id="days">
+<label for="yield">Результативность в сценарии: <strong id="yieldLabel">45%</strong></label><input type="range" min="1" max="49" value="45" id="yield">
+<div class="side-line"><span class="note">Попытки</span><div class="value" id="attempts"></div><div class="bar"><div style="width:100%"></div></div>
+<span class="note">Условно результативные</span><div class="value" id="qualified"></div><div class="bar second"><div id="qualifiedBar"></div></div></div>
+<p class="note">28 дней и 45% — настраиваемые допущения. Не являются подтверждённым итогом истории. Нет данных, чтобы разделить общие потери между регистрацией, блокировками и отсутствием бонуса.</p>
+</div>
+<div id="controls" class="hidden" role="tabpanel">
+<h2>Контрольные точки</h2>
+<table><thead><tr><th>Что проверяем</th><th>Почему важно</th><th>Статус</th></tr></thead><tbody>
+<tr><td>Связанная активность</td><td>Отдельные аккаунты могут представлять один управляемый кластер</td><td>Гипотеза</td></tr>
+<tr><td>Происхождение бонуса</td><td>Недоступная к выводу ценность должна сохранять ограничения</td><td>Не проверено</td></tr>
+<tr><td>Концентрация переводов</td><td>Нужно оценивать общие источники и получателей</td><td>Гипотеза</td></tr>
+<tr><td>Возможность выплаты</td><td>Проверка права на расчёт до подтверждения заявки</td><td>Не проверено</td></tr>
+</tbody></table>
+</div>
+</section>
+<aside class="panel"><div class="kicker">Анализ / выбранный этап</div><div id="detail" class="detail" aria-live="polite"></div><h2 style="margin-top:24px">Комментарии к кейсу</h2><div class="side-line">Сначала отделяем регистрацию от результата. 5 тысяч попыток — это не 5 тысяч начислений.</div><div class="side-line">Основной вопрос здесь в переходе ограниченной ценности между внутренними балансами.</div><div class="side-line">Без событий и проводок мы не можем утверждать, что именно пропустила система.</div><div class="side-line"><span class="badge">Расчёты только локально</span><p class="note">Реальные сервисы, карты и платежи не подключены.</p></div></aside>
+</div><p class="footer">CASE 001 · Ветка исследования. Все показатели и события — оценки из исторического рассказа, если отдельно не указано иное. Интерфейс не подтверждает фактический размер ущерба.</p>
+</main>
 <script>
-const nodes=[...[65,125,185,245].map((y,i)=>({x:95,y,id:'S'+(i+1),type:'Источник',desc:'Синтетический аккаунт. Анализируются выдача бонуса и статус контроля.'})),...[75,135,195,255,315].map((y,i)=>({x:320,y,id:'B'+(i+1),type:'Получатель',desc:'Исследование концентрации внутренних переводов и связей участников.'})),{x:590,y:168,id:'AML',type:'Контроль',desc:'Проверка происхождения бонусной ценности и допустимости выплаты.'}]];
-const g=document.getElementById('graphNodes');
-for(const n of nodes){const el=document.createElementNS('http://www.w3.org/2000/svg','g');el.setAttribute('class','node');el.setAttribute('tabindex','0');el.setAttribute('role','button');el.setAttribute('aria-label',n.id+': '+n.type);el.innerHTML='<circle cx="'+n.x+'" cy="'+n.y+'" r="'+(n.id==='AML'?22:14)+'" fill="'+(n.id==='AML'?'#cbd3db':'#323e4a')+'" stroke="#bec8d3" stroke-width="1.5"/><text x="'+n.x+'" y="'+(n.y+4)+'" text-anchor="middle" font-size="10" font-family="Arial" fill="'+(n.id==='AML'?'#1c232a':'white')+'">'+n.id+'</text>';const choose=()=>{document.getElementById('details').textContent=n.type+' · '+n.id+' — '+n.desc};el.addEventListener('click',choose);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose()}});g.appendChild(el)}
-for(const b of document.querySelectorAll('[data-view]')){b.addEventListener('click',()=>{document.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('active',x===b));for(const id of ['flow','funnel','monitor'])document.getElementById(id).classList.toggle('hidden',id!==b.dataset.view);})}
-document.getElementById('rate').addEventListener('input',e=>{const v=Number(e.target.value);document.getElementById('rateLabel').textContent=v+'%';document.getElementById('yieldLabel').textContent=Math.round(140000*v/100).toLocaleString('ru-RU')+' ('+v+'%)';document.getElementById('yieldBar').style.width=v+'%'});
-</script></body></html>
+// Сначала фиксируем этапы движения ценности. Не подменяем ими фактические журналы операций.
+const stages=[
+ {title:"Входящие попытки",short:"Массовый объём",detail:"Наблюдение: около 5 000 попыток в сутки. Отдельно проверяем количество успешных аккаунтов и связи внутри группы. Источника выгрузки пока нет."},
+ {title:"Состояние аккаунтов",short:"Потери по причинам",detail:"Потери включали непригодные номера, блокировки, потерю доступа в период ожидания и отсутствие бонуса. Доли по каждой причине неизвестны."},
+ {title:"Начисление бонусов",short:"Ограниченный актив",detail:"Здесь важно установить, на каком счёте и с каким признаком ограничения была отражена цифровая ценность."},
+ {title:"Внутренние перемещения",short:"Связанные получатели",detail:"По историческому описанию ценность концентрировалась на пяти получателях. Фактического графа транзакций пока нет."},
+ {title:"Проверка допустимости",short:"Контроль происхождения",detail:"Главный вопрос: сохранялись ли ограничения исходного бонуса при изменении его формы внутри платформы?"},
+ {title:"Запрос внешнего расчёта",short:"Переход к деньгам",detail:"Для проверки вывода нужны обезличенные события заявок, решения контроля и бухгалтерские записи. Денежных операций этот стенд не проводит."}
+];
+const grid=document.getElementById("stageGrid"),detail=document.getElementById("detail");
+stages.forEach((stage,index)=>{const b=document.createElement("button");b.className="stage";b.type="button";b.setAttribute("aria-pressed",index===0?"true":"false");b.innerHTML='<span class="number">ЭТАП '+String(index+1).padStart(2,"0")+'</span><strong>'+stage.title+'</strong><span class="note">'+stage.short+'</span>';b.addEventListener("click",()=>{document.querySelectorAll(".stage").forEach(x=>x.setAttribute("aria-pressed","false"));b.setAttribute("aria-pressed","true");detail.replaceChildren();const heading=document.createElement("div");heading.className="detail-title";heading.textContent=stage.title;const desc=document.createElement("p");desc.textContent=stage.detail;detail.append(heading,desc)});grid.append(b);if(index===0)b.click()});
+document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-tab]").forEach(t=>{const selected=t===b;t.setAttribute("aria-selected",String(selected));document.getElementById(t.dataset.tab).classList.toggle("hidden",!selected)})}));
+// Это оценка нагрузки. Не рассчитываем из неё доход и не выдаём допущения за результат.
+function recalc(){const days=Number(document.getElementById("days").value),pct=Number(document.getElementById("yield").value);const count=days*5000;document.getElementById("daysLabel").textContent=days;document.getElementById("yieldLabel").textContent=pct+"%";document.getElementById("attempts").textContent=count.toLocaleString("ru-RU");document.getElementById("qualified").textContent=Math.floor(count*pct/100).toLocaleString("ru-RU");document.getElementById("qualifiedBar").style.width=pct+"%"}
+["days","yield"].forEach(id=>document.getElementById(id).addEventListener("input",recalc));recalc();
+</script>
+</body></html>
