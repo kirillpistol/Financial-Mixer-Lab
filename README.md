@@ -44,3 +44,7 @@ Add anonymized historical case descriptions, synthetic replay events, alerts, an
 ## Synthetic load module
 
 Use `python -m scripts.load_test --accounts 50 --operations 200 --tps 20` to estimate a bounded synthetic workload; add `--execute` to run it locally. See [load testing notes](docs/LOAD_TESTING.md). The `app.workload_profiles` registry defines declarative offline scenarios; only fictional accounts are supported.
+
+## Defensive case studies
+
+- [Case 001 — Promotional value abuse](docs/cases/CASE_001_PROMOTIONAL_VALUE_ABUSE.md): user-reported historical scenario, trust boundaries, detection hypotheses, and closed-loop synthetic replay specification. Historical details remain unverified; this is not an evasion tutorial.
