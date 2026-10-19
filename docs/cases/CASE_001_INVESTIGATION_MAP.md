@@ -1,4 +1,4 @@
-# CASE 001 — Defensive investigation map
+# CASE 001 — Пятёрочка × ВКонтакте / Defensive investigation map
 
 **Branch:** `case-001-defensive-map`  
 **Status:** Alleged historical account/reward abuse, user narrative only, not independently verified.  
@@ -27,6 +27,14 @@ flowchart TD
 ```
 
 The diagram abstracts away actionable execution detail. It does not depict device allocation, SIM provisioning, proxy or clicker configuration, automated verification, use of others' payment credentials, payout-routing recipes or cash withdrawal instructions.
+
+## Reported platform roles (unverified)
+
+- **Пятёрочка** — alleged source of the promotional campaign.
+- **ВКонтакте (VK)** — alleged environment for account registration, promotional digital rewards and streaming monetization.
+- **Payment providers** — alleged downstream payout environment; specific institutions are not identified.
+
+These labels come from the narrator's recollection and do **not** establish a verified vulnerability or wrongdoing by the named companies.
 
 ## Reported context (unverified)
 
