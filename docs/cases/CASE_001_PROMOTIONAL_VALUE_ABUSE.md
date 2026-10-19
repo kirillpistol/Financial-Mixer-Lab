@@ -112,3 +112,23 @@ For any later case study, collect a redacted source narrative; approximate perio
 
 Whether 5,000 accounts/day was sustained across multiple days; whether these were all registered successfully; how many passed required verification; how many received rewards; time-of-day peak pattern; and whether reported RUB 2 million is gross, net, or approximate.
 
+
+## Supplement B — Reported campaign duration and qualification yield
+
+**Narrator estimate; unverified:** The activity lasted **slightly less than one month**. Of approximately **5,000 new accounts attempted per day**, **slightly under 50%** successfully passed the relevant qualification or verification step (the exact success criterion is not yet documented). These should not be equated with completed bonus claims, transfers, or redeemable credits.
+
+### Derived bounds (illustrative, not audited totals)
+
+- Daily qualifying accounts: **below 2,500**, assuming the 5,000/day input estimate and under-50% yield refer to the same daily cohort.
+- Daily unsuccessful/non-qualifying accounts: **above 2,500** under the same assumptions.
+- Calendar-day duration is unknown; **do not assert 30 days**, exact registrations, precise payouts per account, or an exact total.
+- For scale intuition only: **28 days at 5,000 attempts/day = 140,000 attempted accounts**, with **fewer than 70,000** qualifying at an under-50% yield. The 28-day period is hypothetical, not a statement about the case.
+- The reported **RUB 2 million** outcome remains an unverified narrator estimate, without corroborated gross/net definition.
+
+### Defensive modelling implications
+
+Use a configurable **daily attempted-account count**, **qualification probability below 0.5**, and **duration in days**, with separately recorded reward-issue events. Analyze drop-off, suspicious coordinated account clusters, and restriction-preserving internal ledger flows using only synthetic actors. Rate-based registration and identity integrity checks belong in the defender's monitoring model, not a live-registration bot.
+
+### Evidence still missing
+
+Actual count of days, whether 5,000/day was consistent, qualification criteria, number of successful reward claims, number of receivers, and source documents for settlement amounts.
