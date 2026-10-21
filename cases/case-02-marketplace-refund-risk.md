@@ -3,11 +3,12 @@
 **Project:** Mixer by PISTOL / Financial-Mixer-Lab  
 **Status:** Case registered; no execution tooling.  
 **Date:** 2026-10-21  
+**Geography:** Yekaterinburg, Russia (Екатеринбург)  
 **Scope:** Financial-risk analysis and detection, not an operational playbook.
 
 ## User-supplied case description (unverified)
 
-A proposed AliExpress storefront selling small electronics, with a network of accounts and repeated disputed/refunded marketplace purchases, intended to generate bank loyalty rewards while recovering purchase funds. The description also references payment obfuscation and payment-authentication bypass; these elements are **excluded from implementation**.
+A proposed AliExpress storefront associated with Yekaterinburg, offering electronics and clothing/other physical goods, with a network of accounts and repeated disputed/refunded marketplace purchases, intended to generate bank loyalty rewards while recovering purchase funds. The description also references payment obfuscation and payment-authentication bypass; these elements are **excluded from implementation**.
 
 ### Hypotheses / inputs to validate
 
@@ -56,3 +57,10 @@ User hypothesis: temporarily frozen balances remain *inside the overall system* 
 Conservation identity (for genuine, documented activity): `total_cash = available_cash + restricted_cash`; movement between those two balances does not create revenue. The originally cited 2–2.5% is an **unverified assumption** whose denominator, duration, and ultimate release rate are unknown. Model a contingent loss separately instead of assuming all freezes eventually release.
 
 For illustration only: of RUB 1,000,000 already held in cash balances, a 2.5% lock gives RUB 975,000 available and RUB 25,000 restricted, before other liabilities. This must **not** be interpreted as RUB 975,000 being available from RUB 1,000,000 of cumulative transaction volume; volume is a flow, not cash on hand.
+
+## Merchandise and genuine-commerce component (user update)
+
+- **Geography:** Екатеринбург (Yekaterinburg), Russian Federation.
+- **Merchandise:** electronic devices and other technology products; clothing and other physical consumer goods.
+- **Sales model:** a **partial component of genuine trading in physical goods** is part of the described case. Track genuine, fulfilled sales independently of any disputes/refunds; no assumption that real sales legitimize fictitious operations.
+- **Detail status:** exact share and product mix not specified yet.
