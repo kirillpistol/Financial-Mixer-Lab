@@ -48,3 +48,11 @@ A proposed AliExpress storefront selling small electronics, with a network of ac
 ## Boundary
 
 This case must not implement fabricated storefront transactions, account farms, refund manipulation, funds laundering, 3-D Secure circumvention, or techniques for avoiding fraud detection.
+
+## Liquidity-lock interpretation (user clarification)
+
+User hypothesis: temporarily frozen balances remain *inside the overall system* and affect the **availability/timing of working capital**, not an immediate realized loss. Treat a freeze as a transfer from `available_cash` to `restricted_cash`, not as an expense. On verified release, reverse that classification. Distinguish this from money ultimately forfeited, fees, and chargeback liabilities.
+
+Conservation identity (for genuine, documented activity): `total_cash = available_cash + restricted_cash`; movement between those two balances does not create revenue. The originally cited 2–2.5% is an **unverified assumption** whose denominator, duration, and ultimate release rate are unknown. Model a contingent loss separately instead of assuming all freezes eventually release.
+
+For illustration only: of RUB 1,000,000 already held in cash balances, a 2.5% lock gives RUB 975,000 available and RUB 25,000 restricted, before other liabilities. This must **not** be interpreted as RUB 975,000 being available from RUB 1,000,000 of cumulative transaction volume; volume is a flow, not cash on hand.
