@@ -51,3 +51,13 @@ Use `python -m scripts.load_test --accounts 50 --operations 200 --tps 20` to est
 
 - [Case 002 — Marketplace cashback/refund risk](cases/case-02-marketplace-refund-risk.md): unverified scenario analysis and linked [synthetic visualizations](visuals/case-02/).
 - [Case 003 — Counterfeit cash and recurring-payment risk](cases/case-03-counterfeit-cash-billing-risk.md) ([defensive visual brief](visuals/case-03/index.html) · [QA dashboard](visuals/case-03/dashboard.html) · [tests](docs/CASE_003_QA.md)): unverified alleged US bank loss; defensive cash-authentication, ledger reconciliation and recurring-billing monitoring questions.
+
+### CASE 003 — Unified QA dashboard
+
+Generate the integrated seven-stage dashboard, including computed monitoring statistics and a filterable analyst workbench:
+
+```bash
+python -m scripts.case03_unified --seed 3003 --cases 200 --output case03_unified.html
+```
+
+Open `case03_unified.html` locally. See [QA and dataset notes](docs/CASE_003_QA.md). Data shown in charts are test inputs, not verified historical financial statistics.
