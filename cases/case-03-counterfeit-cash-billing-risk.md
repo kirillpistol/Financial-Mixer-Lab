@@ -85,3 +85,19 @@ Generate only fictional `funding_or_refund_review`, `mandate_audit`, `billing_au
 ### Verification gaps
 
 No timestamps, disputed transaction records, consent proof, issuer logs, 3DS result codes, bank statements, refund state or measured notification volumes have been supplied. The claimed SMS flooding and authentication bypass must remain unverified.
+
+## Supplement B — Reported prevalidation and multi-merchant charge pattern
+
+**Historical narrator account; not independently verified.** The narrator describes a pre-existing collection of phone numbers allegedly screened by a third-party checker and associated with small initial subscription charges reported as **RUB 1**. The account claims that further, substantially larger amounts — described as **USD 300 or USD 1,500** — were sought through as many as **10 subscription services**. A one-day interval is mentioned, but the precise chronology, payment authorizations and any completed settlement are unverified. These figures are anecdotal, not evidence of debited balances or bank losses.
+
+This account is preserved only as a **defensive risk hypothesis**, not a usable payment, subscription or account-setup workflow. It does not establish whether any given service stored valid recurring-payment consent, whether the small charge was an authorization or a captured payment, whether larger charges were approved, or whether EMV 3-D Secure was technically circumvented.
+
+### Bank and acquirer investigation checklist
+
+- Examine validity and scope of initial customer consent and subsequent merchant-initiated payment mandates.
+- Distinguish verification authorizations, captured charges, attempted recurring payments and successful settlement.
+- Look for abnormal cross-merchant concentration of disputes or complaints, using lawful data and appropriate privacy protections.
+- Review merchant underwriting and recurring-billing disclosures against documented contractual terms.
+- Reconcile claimed attempted amounts against actual ledger postings and any documented financial losses.
+
+**Research controls:** Synthetic, fictional event logs only. No real-number databases, checker integrations, small-charge testing, merchant setup, SMS delivery, subscription triggering or payment execution.
