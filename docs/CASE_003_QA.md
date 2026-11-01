@@ -34,3 +34,18 @@ start .\case03_report.html
 - The 200 cases and 25% positive-labelled share are deliberately chosen QA inputs, **not empirical estimates**. All observations are created offline by a seeded generator. Positives are labelled by design to test detector behavior; the detector's alerts are not proof of fraud.
 - JSON includes counts by observation type, alert totals, a confusion matrix, precision, recall, and false-positive rate. HTML is a self-contained visualization built from the same computed report.
 - Run with `--cases 1000` to test larger synthetic datasets (permitted range: 20–5000). No monetary transactions, card operations, SMS or external APIs are exercised.
+
+## Unified CASE 003 dashboard
+
+Generate the dashboard from the current Python detector and benchmark:
+
+```powershell
+git pull origin main
+python -m pytest -q
+python -m scripts.case03_unified --seed 3003 --cases 200 --output case03_unified.html
+start .\case03_unified.html
+```
+
+The output keeps the existing technical tabs and adds **06 · Аналитика** with computed metrics, event counts, rule activations, reconciliation definitions, and a filterable 40-record investigation sample. It runs locally in a browser without CDN dependencies, live payment rails, real bank accounts, SMS delivery, or API access.
+
+The actual amounts deposited and any proven loss remain unknown. The $6 million figure is narrative face-value context only and does not generate any money or simulate successful fraud. Indicators are computed from synthetic QA events and are not calibrated detection rates from a bank.
