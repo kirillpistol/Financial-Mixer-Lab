@@ -109,3 +109,53 @@ This account is preserved only as a **defensive risk hypothesis**, not a usable 
 **Defender traceability requirements:** Preserve the link between cash-authenticity incident records, ATM reconciliation, credited account entries, disputed subscription authorizations, merchant/acquirer settlement, and payout beneficiary. Investigators should establish evidentiary continuity and assess who controlled each stage; do not infer identity or criminal intent merely from temporal coincidence.
 
 This supplement supplies no practical workflow for injecting counterfeit notes, triggering charges or withdrawing proceeds.
+
+## Supplement D — Preparatory infrastructure and cross-system forensic model
+
+**Scope:** Technical risk research, not operational instructions. The following details are taken from the narrator's account. They are not proof that particular vendors, card issuers, telecom providers or software developers were involved.
+
+### 0. Preparatory identity and payment infrastructure
+
+The narrator describes a previously assembled dataset of telephone numbers with prior subscription and billing associations (described as a "number dump"). The narrative also references acquired or reissued payment cards, third-party-controlled numbers, and accounts with existing subscription records. The term "warmed" indicates a claimed prior activity history; it does not establish legitimate cardholder authorization.
+
+A separate claim concerns compromised subscription-service databases and retained payment credentials. For defensible investigation, distinguish **records of a card token**, merchant vault references, actual cardholder data, and proof of consent; the existence of a record in a system does not authenticate its owner.
+
+The narrator refers to card-data rewriting with an embosser. An embosser is associated with physical card personalization; assertions that it can rewrite payment authorization or chip credentials cannot be accepted without technical evidence. This report does not provide personalization, encoding, cloning, or tampering steps.
+
+**Investigative controls:** token lifecycle and issuer reissue records, reported compromise dates, PCI DSS incident evidence, cardholder consent audit, third-party identity verification, phone-number ownership change history under lawful process, and merchant onboarding records.
+
+### 1. Cash acceptor and ATM controls
+
+The scenario places counterfeit production in China and cash-in at US ATMs via third parties. The diagnostic question is whether an exception in authenticity screening and cash-credit reconciliation was resolved or left open.
+
+**Forensic artifacts:** ATM event journal, note-acceptance inspection findings, service technician incident records, cassette balancing, credited account journal, exception escalation and supervisory disposition. Do not treat an ATM credit as independent proof of genuine banknotes.
+
+### 2. Subscription consent and billing compromise
+
+The narrative describes pre-existing subscriptions, apparently successful charges, recurring billing and potential service compromise. The relevant question is which entity authorized which transaction and whether an authenticated consent record exists.
+
+**Forensic artifacts:** customer mandate text and version; customer-initiated versus merchant-initiated classification; token provenance; acquiring merchant and settlement identifiers; refund/chargeback status; application security and breach audit logs. An SMS-bombing allegation warrants notification-volume review; it does not establish that 3-D Secure was bypassed.
+
+### 3. Merchant payouts and beneficiary attribution
+
+A merchant-facing receipt or payout may appear to be normal service revenue while the source is disputed. This is an **appearance of ordinary settlement**, not legal cleansing.
+
+**Forensic artifacts:** processor settlement reports, beneficiary ownership investigations under legal authority, merchant registration and beneficial-owner verification, refunds, dispute reversals, and accounting adjustments. Flag unverifiable documentation rather than assuming it leaves no trace.
+
+### 4. Developer and operator attribution
+
+The narrator mentions the developers of subscription applications, an alleged SMS-bombing tool, and parties handling payment infrastructure. Attribution must distinguish developer, service operator, data broker, merchant owner, and beneficiary. Shared infrastructure or source-code similarity alone is not proof of common control.
+
+**Forensic artifacts:** signed application releases, code provenance where lawfully obtained, vendor contracts, security alerts, incident reports, access logs, merchant onboarding and legal records. No intrusion or de-anonymization techniques are specified.
+
+### 5. Silent fraud: detection without a complaint
+
+A lack of customer complaints is a **missing input**, not an exonerating event. In a defensive model, review unresolved cash exceptions, invalid consent, unverified merchant ownership and payout discrepancies independently of complaints.
+
+### QA acceptance criteria
+
+1. Preserve event/source references for every alert; missing sources may not be silently upgraded to verified.
+2. Separate an authorization request from captured funds, cleared settlement, payout and proven loss.
+3. Do not equate card reissue, card token storage, physical card personalization or a phone-number association with consent.
+4. Include benign examples and false-positive review; report case-level precision, recall and false-positive rate.
+5. Keep the entire pipeline offline with fictional records. No cards, phone numbers, payment credentials, banks, ATMs, subscription services or SMS systems are connected.
