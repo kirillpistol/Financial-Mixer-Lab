@@ -101,3 +101,13 @@ This account is preserved only as a **defensive risk hypothesis**, not a usable 
 - Reconcile claimed attempted amounts against actual ledger postings and any documented financial losses.
 
 **Research controls:** Synthetic, fictional event logs only. No real-number databases, checker integrations, small-charge testing, merchant setup, SMS delivery, subscription triggering or payment execution.
+
+## Supplement C — Clarified alleged sequence and provenance
+
+**Narrator clarification (unverified):** The alleged incident is described as counterfeit US-dollar notes being accepted by a cash-deposit ATM, followed by subscription payments through third-party services, and then onward disbursements presented to recipients as ordinary service-generated payments. The narrator characterized the proceeds as “almost clean.” This phrase describes **apparent payment provenance**, not lawful origin or actual legal status.
+
+**Accounting and legal distinction:** A payment appearing in a merchant or subscription service statement does not cure counterfeit origin, validate a fraudulent mandate, or extinguish potential recovery claims. Actual cash acceptance, ledger credit, merchant charge settlement, payout, and ultimate loss are distinct events. None is independently verified in this case.
+
+**Defender traceability requirements:** Preserve the link between cash-authenticity incident records, ATM reconciliation, credited account entries, disputed subscription authorizations, merchant/acquirer settlement, and payout beneficiary. Investigators should establish evidentiary continuity and assess who controlled each stage; do not infer identity or criminal intent merely from temporal coincidence.
+
+This supplement supplies no practical workflow for injecting counterfeit notes, triggering charges or withdrawing proceeds.
