@@ -1,15 +1,13 @@
 # CASE 003 — Alleged counterfeit-cash acceptance and subscription-payment laundering risk
 
-**Classification:** Unverified user-reported historical scenario. Defensive research only.  
+**Classification:** Historical case narrative supplied by the narrator; defensive research only. Specific actors and financial records are not independently established.  
 **Safety boundary:** Fictional data, simulated events, no real bank, ATM, payment, messaging, printing, shipping, or P2P integration. This is not a laundering or counterfeiting playbook.
 
 ## Executive summary
 
-The narrator describes a purported operation involving high-precision counterfeit US-dollar banknotes with an alleged face value of **USD 6 million**. According to the narrator, the notes were allegedly manufactured in another country and subsequently moved across borders by third parties. Postal or diplomatic involvement was also claimed but is unverified; no implicated persons, routes, or institutions have been independently identified. The narrative further alleges that an unidentified **US bank (“Bank N”) accepted only part of the presented cash and incurred substantial losses**. A subsequent claimed stage associates account-linked phone numbers with automated recurring billing through applications supporting payment processing and P2P transfers.
+The case narrative places the production of counterfeit US-dollar banknotes in **China** and their movement across borders via third parties. It places the cash deposit activity at **ATMs in the United States**, followed by subscription charges and subsequent service payouts. **Only part of the intended cash volume was accepted; the deposited amount is deliberately unspecified because the processed amount was below plan.** This is a reconstruction of the narrator's account, not an independently adjudicated finding about a specific manufacturer, courier, bank, or individual.
 
-**All of these assertions remain unverified.** No country, manufacturer, bank, diplomat, transaction, loss, account, or criminal conduct has been independently established. No implication that diplomats or a real identifiable bank were actually involved should be drawn from this narrative.
-
-Importantly, USD 6 million is a **claimed nominal face value**, not a confirmed amount deposited, credited, laundered or lost.
+The description also mentions possible postal or diplomatic involvement, without evidence identifying particular persons or channels. The US bank is anonymized as **Bank N**. The reported financial loss has not been quantified or verified. Do not equate counterfeit face value, deposits, successful subscription charges, merchant settlements, and realized bank loss.
 
 ## Critical uncertainty: alleged Bank N loss
 
@@ -48,7 +46,7 @@ Invariants:
 3. Cash-origin risk tags survive all simulated accounting transitions.
 4. Billing authorization is explicitly reviewed; a phone-number association alone is not proof of consent.
 5. Every simulation state transition produces an immutable audit entry.
-6. An alleged loss is never computed as accepted cash or the nominal USD 6 million without documented evidence.
+6. An alleged loss is never computed as accepted cash or any planned or face-value amount without documented evidence.
 
 ## Detection and QA evaluation
 
@@ -61,7 +59,7 @@ Approximate historical period; public source for the alleged claim; whether Bank
 ## Status
 
 - **Documented:** narrator allegations and defensive monitoring questions.
-- **Not verified:** all underlying historical claims, including the USD 6 million figure and Bank N losses.
+- **Not verified:** all underlying historical claims, including Bank N losses.
 - **Not implemented:** case-specific synthetic replay and detection tests.
 
 ## Supplement A — Alleged SMS flooding around pre-existing recurring billing
