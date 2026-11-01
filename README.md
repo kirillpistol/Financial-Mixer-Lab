@@ -48,3 +48,6 @@ Use `python -m scripts.load_test --accounts 50 --operations 200 --tps 20` to est
 ## Defensive case studies
 
 - [Case 001 — Promotional value abuse](docs/cases/CASE_001_PROMOTIONAL_VALUE_ABUSE.md): user-reported historical scenario, trust boundaries, detection hypotheses, and closed-loop synthetic replay specification. Historical details remain unverified; this is not an evasion tutorial.
+
+- [Case 002 — Marketplace cashback/refund risk](cases/case-02-marketplace-refund-risk.md): unverified scenario analysis and linked [synthetic visualizations](visuals/case-02/).
+- [Case 003 — Counterfeit cash and recurring-payment risk](cases/case-03-counterfeit-cash-billing-risk.md): unverified alleged US bank loss; defensive cash-authentication, ledger reconciliation and recurring-billing monitoring questions.
