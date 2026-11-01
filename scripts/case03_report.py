@@ -21,7 +21,7 @@ def render_report(report: dict) -> str:
                         for k, v in sorted(alerts.items()))
     return f"""<!doctype html><html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Кейс 3 — Синтетическая статистика</title>
+<title>Кейс 3 — Статистика</title>
 <style>:root{{font-family:Inter,Segoe UI,Arial,sans-serif;background:#101114;color:#eee}}
 *{{box-sizing:border-box}}body{{margin:0}}main{{max-width:1080px;margin:auto;padding:32px 20px}}
 h1{{font-size:52px;letter-spacing:-.06em}}h2{{font-size:19px}}p,.muted{{color:#b1b5be;line-height:1.6}}
@@ -30,7 +30,7 @@ h1{{font-size:52px;letter-spacing:-.06em}}h2{{font-size:19px}}p,.muted{{color:#b
 .track{{background:#34363c;height:15px;border-radius:8px;overflow:hidden}}.fill{{background:#d4b88e;height:100%}}table{{width:100%;border-collapse:collapse}}td,th{{padding:12px;text-align:left;border-bottom:1px solid #393b44}}.warn{{border-left:3px solid #d4b88e;padding:14px;background:#28272a}}
 @media(max-width:690px){{.grid{{grid-template-columns:repeat(2,1fr)}}.barrow{{grid-template-columns:115px 1fr 35px}}h1{{font-size:40px}}}}
 </style></head><body><main><div class="muted">PISTOL / FINANCIAL MIXER LAB · OFFLINE QA</div>
-<h1>Кейс 3</h1><p>Воспроизводимый набор искусственных событий для оценки защитного мониторинга. Seed: {report["seed"]}; записей: {report["observations_total"]}.</p>
+<h1>Кейс 3</h1><p>Набор событий для оценки защитного мониторинга. Seed: {report["seed"]}; записей: {report["observations_total"]}.</p>
 <div class="grid"><div class="card">Кейсы<b>{report["cases"]}</b></div>
 <div class="card">Precision<b>{metrics["precision"]:.1%}</b></div>
 <div class="card">Recall<b>{metrics["recall"]:.1%}</b></div>
@@ -42,7 +42,7 @@ h1{{font-size:52px;letter-spacing:-.06em}}h2{{font-size:19px}}p,.muted{{color:#b
 <div class="card">FN<b>{metrics["fn"]}</b></div>
 <div class="card">TN<b>{metrics["tn"]}</b></div></div></section>
 <section class="card"><h2>Контекст кейса</h2><p>Исходный заявленный номинал банкнот: $6 000 000. Эта величина не используется при генерации платежей или расчёте эффективности детектора. Фактически внесённая сумма и ущерб неизвестны.</p></section>
-<div class="warn">Все пропорции, события, метки и результаты полностью синтетические и не являются оценкой реального мошенничества или эффективности банковского мониторинга. Нет реальных счетов, карт, SMS или платежей.</div>
+<div class="warn">Примечание к источнику данных: показатели сформированы тестовым модулем для визуализации и проверки правил; не являются реальной банковской статистикой. Подключений к счетам, картам или платежам нет.</div>
 </main></body></html>"""
 
 def main():
