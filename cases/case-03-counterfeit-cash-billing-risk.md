@@ -5,7 +5,7 @@
 
 ## Executive summary
 
-The narrator describes a purported operation involving high-precision counterfeit US-dollar banknotes with an alleged face value of **USD 6 million**, claimed international circulation and purported use of postal or diplomatic channels. The narrative further alleges that an unidentified **US bank (“Bank N”) accepted only part of the presented cash and incurred substantial losses**. A subsequent claimed stage associates account-linked phone numbers with automated recurring billing through applications supporting payment processing and P2P transfers.
+The narrator describes a purported operation involving high-precision counterfeit US-dollar banknotes with an alleged face value of **USD 6 million**. According to the narrator, the notes were allegedly manufactured in another country and subsequently moved across borders by third parties. Postal or diplomatic involvement was also claimed but is unverified; no implicated persons, routes, or institutions have been independently identified. The narrative further alleges that an unidentified **US bank (“Bank N”) accepted only part of the presented cash and incurred substantial losses**. A subsequent claimed stage associates account-linked phone numbers with automated recurring billing through applications supporting payment processing and P2P transfers.
 
 **All of these assertions remain unverified.** No country, manufacturer, bank, diplomat, transaction, loss, account, or criminal conduct has been independently established. No implication that diplomats or a real identifiable bank were actually involved should be drawn from this narrative.
 
