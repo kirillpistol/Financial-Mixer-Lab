@@ -63,3 +63,25 @@ Approximate historical period; public source for the alleged claim; whether Bank
 - **Documented:** narrator allegations and defensive monitoring questions.
 - **Not verified:** all underlying historical claims, including the USD 6 million figure and Bank N losses.
 - **Not implemented:** case-specific synthetic replay and detection tests.
+
+## Supplement A — Alleged SMS flooding around pre-existing recurring billing
+
+**Narrator clarification; not independently verified:** In the reported scenario, an SMS flooding tool (colloquially called a "bomber") allegedly saturates a phone number with unrelated messages. The narrator describes subscriptions as already associated with an account before a subsequent suspicious payment episode, with an asserted temporal link to either cash acceptance at a terminal or a retail refund. These are **allegations about a proposed sequence, not a demonstrated attack chain**.
+
+**Important technical distinction:** An SMS flood cannot itself disable EMV 3-D Secure or prove that any authentication requirement was bypassed. Recurring merchant-initiated transactions can be handled differently from initial customer-initiated payments, subject to network rules, mandate validity, issuer/acquirer controls, and applicable regulation. Whether authorization was invalid, consent forged, or processing misclassified cannot be determined without trustworthy transaction records.
+
+### Defender research questions
+
+- Were recurring payment mandates genuinely consented to, correctly enrolled and traceably linked to the payer?
+- Did the bank, acquirer and merchant apply the right authentication, exception and recurring-transaction classification controls?
+- Was there an unusual increase in notification traffic or customer support contacts around disputed payments, and could that have impaired detection?
+- Were cash-credit or refund ledger events followed by disputes or anomalous merchant billing, without assuming that temporal sequence proves causation?
+- Did a purported refund actually finalize, or was it pending, reversed or rejected?
+
+### Closed-loop defensive tests
+
+Generate only fictional `funding_or_refund_review`, `mandate_audit`, `billing_authorization_audit`, `notification_volume_anomaly`, and `dispute_review` records. Evaluate an alert that **correlates**, rather than executes, suspicious authorization, notification volume and disputed transaction events. Include legitimate billing and notification-burst counterexamples. Never send SMS, generate accounts, obtain cards, connect payment gateways, or automate real charges.
+
+### Verification gaps
+
+No timestamps, disputed transaction records, consent proof, issuer logs, 3DS result codes, bank statements, refund state or measured notification volumes have been supplied. The claimed SMS flooding and authentication bypass must remain unverified.
